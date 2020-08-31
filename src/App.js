@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React , { Component } from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Login from './views/Pages/Login';
+import Dashboard from './views/Dashboard';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const loading = () => (
+  <div className="animated fadeIn pt-3 text-center">Loading...</div>
+);
+// Pages
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+      <React.Suspense fallback={loading()}>
+        <Switch>
+          <Route
+            exact
+            path="/login"
+            name="Login Page"
+            component={Login}
+          />
+          <Route
+            exact
+            path="/"
+            name="home"
+            component={Dashboard}
+          />
+        </Switch>
+      </React.Suspense>
+    </BrowserRouter>
   );
 }
-
+}
 export default App;
