@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { useHistory } from 'react-router-dom';
+import Server from '../../../services/server'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -25,7 +25,9 @@ function Copyright() {
     </Typography>
   );
 }
-
+function login(){
+  Server.authentication();
+}
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -60,35 +62,11 @@ export default function Login() {
           Sign in
         </Typography>
         <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+        
+     
           <Button
          //   type="submit"
-         onClick={() => { alert('clicked') }}
+         onClick={() => { login() }}
             fullWidth
             variant="contained"
             color="primary"
@@ -96,6 +74,7 @@ export default function Login() {
           >
             Sign In
           </Button>
+          <a>login</a>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
