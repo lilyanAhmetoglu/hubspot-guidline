@@ -19,13 +19,10 @@ class Server {
   }
 
   authcode(authcode) {
-    const formData = new FormData();
-    //let headers = new Headers();
-    formData.append("grant_type", "authorization_code");
-    formData.append("client_id", CLIENT_ID);
-    formData.append("client_secret", CLIENT_SECRET);
-    formData.append("redirect_uri", REDIRECT_URI);
-    formData.append("code", authcode);
+    let formData = {
+      code:authcode
+    }
+
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin':'http://localhost:3000',
@@ -33,7 +30,7 @@ class Server {
       'Access-Control-Allow-Methods':'GET, POST, PATCH, PUT, DELETE, OPTIONS'
     }
 
-    return axios.post(`http://localhost:3001/api/hubspot`);
+    return axios.post(`http://localhost:3001/api/hubspot`,formData);
   }
 }
 

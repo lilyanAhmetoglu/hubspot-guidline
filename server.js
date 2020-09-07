@@ -28,13 +28,15 @@ app.post("/api/hubspot", function (req, res) {
     client_id: CLIENT_ID,
     client_secret: CLIENT_SECRET,
     redirect_uri: REDIRECT_URI,
-    code: req.query.code,
+    code: req.body.code,
   };
+  console.log(req.body.code)
   request.post(
     "https://api.hubapi.com/oauth/v1/token",
     { form: formData },
     (err, data) => {
-      console.log(JSON.stringify(data));
+      //console.log(res)
+      
       res.json(data);
     }
   );
