@@ -2,6 +2,7 @@ import React , { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from './views/Pages/Login';
 import Dashboard from './views/Dashboard';
+import Callback from './services/callback';
 import './App.css';
 
 const loading = () => (
@@ -20,6 +21,12 @@ class App extends Component {
             path="/login"
             name="Login Page"
             component={Login}
+          />
+           <Route
+            exact
+            path="/callback"
+            name="callback"
+            component={Callback}
           />
           <Route
             exact
