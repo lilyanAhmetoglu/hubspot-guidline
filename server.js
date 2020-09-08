@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const CLIENT_ID = "9ebab9fa-1b06-4191-a849-5f94590debf7";
 const BASE_URL = "https://app.hubspot.com/oauth/authorize";
 const REDIRECT_URL = "http://localhost:3000/";
-const REDIRECT_URI = "http://localhost:3000/callback";
+const REDIRECT_URI = "http://localhost:3000/auth-callback";
 const SCOPES = "contacts automation";
 const CLIENT_SECRET = "8dcf41be-c88c-4de6-9ce4-dec4b1b45e7a";
 
@@ -27,7 +27,7 @@ app.post("/api/hubspot", function (req, res) {
     grant_type: "authorization_code",
     client_id: CLIENT_ID,
     client_secret: CLIENT_SECRET,
-    redirect_uri: REDIRECT_URI,
+    redirect_uri: REDIRECT_URL,
     code: req.body.code,
   };
   console.log(req.body.code)
