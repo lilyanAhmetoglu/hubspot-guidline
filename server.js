@@ -36,8 +36,8 @@ app.post("/api/hubspot", function (req, res) {
     { form: formData },
     (err, data) => {
       //console.log(res)
-      
-      res.json(data);
+      if (err) return res.status(400).send(err);
+      return res.status(200).send(data);
     }
   );
 });
