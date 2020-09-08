@@ -14,7 +14,11 @@ export default class Dashboard extends Component {
     firstName: "",
     lastName: "",
     email: "",
-
+    newold: "",
+    kind: "",
+    email: "",
+    phone: "",
+    
     // step 2
     jobTitle: "",
     jobCompany: "",
@@ -45,6 +49,10 @@ export default class Dashboard extends Component {
       step,
       firstName,
       lastName,
+      newold,
+      kind,
+      email,
+      phone,
       jobTitle,
       jobCompany,
       jobLocation,
@@ -57,6 +65,10 @@ export default class Dashboard extends Component {
           handleChange={this.handleChange}
           firstName={firstName}
           lastName={lastName}
+          newold={newold}
+          kind={kind}
+          email={email}
+          phone={phone}
         />
       );
     if (step === 2)
@@ -106,9 +118,16 @@ export default class Dashboard extends Component {
   render() {
     const { step } = this.state;
     return (
-      <div>
-        <h2>Qsales Step {step} of 4.</h2>
-        {this.showStep()}
+      <div className="container">
+        <div className="row ">
+          <div className="col-md-12 ">
+            <div className="theform">
+              <h6> Step {step} of 4.</h6>
+            
+              {this.showStep()}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

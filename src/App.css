@@ -23,7 +23,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.bck_b_light{
+  text-align:center;
+}
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +38,72 @@
     transform: rotate(360deg);
   }
 }
+p {
+  margin-bottom: 5px;
+}
+  label {
+    display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      font-weight: 600;
+  }
+ 
+  .App {
+    background-color: #eaeaea;
+    width: 100%;
+    display: table;
+  }
+  
+  .App > .Content {
+    display: table;
+    margin: 0 auto;
+    padding: 50px 10px;
+    width: 100%;
+    max-width: 900px;
+  }
+  
+  .App h2 {
+    color: #ff7f00;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 0;
+  }
+  .Next {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    margin: 10px 10px 0 0;
+    cursor: pointer;
+  }
+  .Next:hover{
+    background-color: #37843a;
+  }
+  .Next:disabled{
+    cursor: not-allowed;
+    background-color: #7aa07c;
+  }
+  .Back {
+    background-color: #c77f27;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    margin: 10px 10px 0 0;
+    cursor: pointer;
+  }
+  .Back:hover{
+    background-color: #9e631b;
+  }
+  label{
+    text-align: left;
+  }
+  
+  .theform{
+
+  }
+  .theform h6{
+    padding-top: 40px;
+  }
