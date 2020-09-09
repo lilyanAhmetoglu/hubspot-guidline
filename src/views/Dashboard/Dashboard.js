@@ -18,11 +18,16 @@ export default class Dashboard extends Component {
     kind: "",
     email: "",
     phone: "",
-    
+
     // step 2
     jobTitle: "",
     jobCompany: "",
     jobLocation: "",
+    introduction:"",
+    meeting_with_expert:"",
+    later_email:"",
+    task_note:"",
+    task_deadline:""
   };
 
   nextStep = () => {
@@ -54,8 +59,14 @@ export default class Dashboard extends Component {
       email,
       phone,
       jobTitle,
+      introduction,
+      contactperson,
       jobCompany,
       jobLocation,
+      meeting_with_expert,
+      later_email,
+      task_note,
+      task_deadline,
     } = this.state;
 
     if (step === 1)
@@ -69,6 +80,7 @@ export default class Dashboard extends Component {
           kind={kind}
           email={email}
           phone={phone}
+          contactperson={contactperson}
         />
       );
     if (step === 2)
@@ -77,9 +89,16 @@ export default class Dashboard extends Component {
           nextStep={this.nextStep}
           prevStep={this.prevStep}
           handleChange={this.handleChange}
-          jobTitle={jobTitle}
           jobCompany={jobCompany}
+          introduction={introduction}
           jobLocation={jobLocation}
+          firstName={firstName}
+          lastName={lastName}
+          contactperson={contactperson}
+          meeting_with_expert={meeting_with_expert}
+          later_email={later_email}
+          task_note={task_note}
+          task_deadline={task_deadline}
         />
       );
     if (step === 3)
@@ -103,6 +122,8 @@ export default class Dashboard extends Component {
           jobTitle={jobTitle}
           jobCompany={jobCompany}
           jobLocation={jobLocation}
+          introduction={introduction}
+          newold={newold}
           prevStep={this.prevStep}
         />
       );
@@ -123,7 +144,7 @@ export default class Dashboard extends Component {
           <div className="col-md-12 ">
             <div className="theform">
               <h6> Step {step} of 4.</h6>
-            
+
               {this.showStep()}
             </div>
           </div>

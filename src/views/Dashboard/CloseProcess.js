@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Form, Container, Col, Row } from "react-bootstrap";
 export default class CloseProcess extends Component {
   continue = (e) => {
     e.preventDefault();
@@ -13,42 +13,19 @@ export default class CloseProcess extends Component {
   render() {
     const { jobTitle, jobCompany, jobLocation } = this.props;
     return (
-      <div>
-        <h2>Close Process</h2>
-        <label>
-          <input
-            type="text"
-            name="jobTitle"
-            value={jobTitle}
-           // onChange={handleChange("jobTitle")}
-            placeholder="Job Title"
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            name="jobCompany"
-            value={jobCompany}
-            //onChange={handleChange("jobCompany")}
-            placeholder="Company"
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            name="jobCompany"
-            value={jobLocation}
-           // onChange={handleChange("jobLocation")}
-            placeholder="Location"
-          />
-        </label>
+      <Container>
+        <h4>End call / Close process</h4>
+        <p>
+          Thanks for the friendly conversation! Goodbye and have a nice
+          day/week/weekend.
+        </p>
         <button className="Back" onClick={this.back}>
           « Back
         </button>
         <button className="Next" onClick={this.continue}>
           Next »
         </button>
-      </div>
+      </Container>
     );
   }
 }
