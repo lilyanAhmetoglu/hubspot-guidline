@@ -18,7 +18,8 @@ export default class CallCondition extends Component {
   };
   render() {
     const {
-      firstName,
+      name,
+      surname,
       lastName,
       handleChange,
       newold,
@@ -27,6 +28,10 @@ export default class CallCondition extends Component {
       phone,
       company,
       contactperson,
+      meeting_with_expert,
+      later_email,
+      task_note,
+      task_deadline,
     } = this.props;
     
     return (
@@ -66,9 +71,9 @@ export default class CallCondition extends Component {
               <Form.Control
                 type="text"
                 placeholder="customer name"
-                value={firstName}
+                value={name}
                 placeholder="First Name"
-                onChange={handleChange("firstName")}
+                onChange={handleChange("name")}
               />
             </Form.Group>
             <Form.Group>
@@ -76,9 +81,9 @@ export default class CallCondition extends Component {
               <Form.Control
                 type="text"
                 placeholder="customer family name"
-                value={lastName}
+                value={surname}
                 placeholder="Last Name"
-                onChange={handleChange("lastName")}
+                onChange={handleChange("surname")}
               />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlInput1">
@@ -130,7 +135,7 @@ export default class CallCondition extends Component {
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>What kind of call will you do?</Form.Label>
+              <Form.Label>If you already know who you will call, please chose your contact person (if you don't have a specific contact person go next):</Form.Label>
               <Form.Control
                 as="select"
                 value={contactperson}

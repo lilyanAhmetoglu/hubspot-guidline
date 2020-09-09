@@ -11,23 +11,22 @@ export default class Dashboard extends Component {
     step: 1,
 
     // step 1
-    firstName: "",
-    lastName: "",
+    name: "",
+    surname: "",
     email: "",
     newold: "",
     kind: "",
     email: "",
     phone: "",
-
+    company: "",
+    contactperson:"",
     // step 2
-    jobTitle: "",
-    jobCompany: "",
-    jobLocation: "",
-    introduction:"",
-    meeting_with_expert:"",
-    later_email:"",
-    task_note:"",
-    task_deadline:""
+
+    introduction: "",
+    meeting_with_expert: "",
+    later_email: "",
+    task_note: "",
+    task_deadline: "",
   };
 
   nextStep = () => {
@@ -52,17 +51,15 @@ export default class Dashboard extends Component {
   showStep = () => {
     const {
       step,
-      firstName,
-      lastName,
+      name,
+      surname,
       newold,
       kind,
       email,
       phone,
-      jobTitle,
       introduction,
       contactperson,
-      jobCompany,
-      jobLocation,
+      company,
       meeting_with_expert,
       later_email,
       task_note,
@@ -74,9 +71,10 @@ export default class Dashboard extends Component {
         <CallCondition
           nextStep={this.nextStep}
           handleChange={this.handleChange}
-          firstName={firstName}
-          lastName={lastName}
           newold={newold}
+          name={name}
+          surname={surname}
+          company={company}
           kind={kind}
           email={email}
           phone={phone}
@@ -89,11 +87,7 @@ export default class Dashboard extends Component {
           nextStep={this.nextStep}
           prevStep={this.prevStep}
           handleChange={this.handleChange}
-          jobCompany={jobCompany}
           introduction={introduction}
-          jobLocation={jobLocation}
-          firstName={firstName}
-          lastName={lastName}
           contactperson={contactperson}
           meeting_with_expert={meeting_with_expert}
           later_email={later_email}
@@ -104,11 +98,6 @@ export default class Dashboard extends Component {
     if (step === 3)
       return (
         <CloseProcess
-          firstName={firstName}
-          lastName={lastName}
-          jobTitle={jobTitle}
-          jobCompany={jobCompany}
-          jobLocation={jobLocation}
           handleChange={this.handleChange}
           prevStep={this.prevStep}
           nextStep={this.nextStep}
@@ -117,13 +106,20 @@ export default class Dashboard extends Component {
     if (step === 4)
       return (
         <Conclusion
-          firstName={firstName}
-          lastName={lastName}
-          jobTitle={jobTitle}
-          jobCompany={jobCompany}
-          jobLocation={jobLocation}
-          introduction={introduction}
           newold={newold}
+          name={name}
+          surname={surname}
+          kind={kind}
+          company={company}
+          email={email}
+          phone={phone}
+          contactperson={contactperson}
+          introduction={introduction}
+          contactperson={contactperson}
+          meeting_with_expert={meeting_with_expert}
+          later_email={later_email}
+          task_note={task_note}
+          task_deadline={task_deadline}
           prevStep={this.prevStep}
         />
       );

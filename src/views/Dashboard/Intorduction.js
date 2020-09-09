@@ -57,6 +57,7 @@ export default class Intorduction extends Component {
             value={introduction}
             onChange={handleChange("introduction")}
           >
+            <option value="">Choose</option>
             <option value="yes">Yes</option>
             <option value="later">Maybe later</option>
             <option value="no">No</option>
@@ -83,63 +84,125 @@ export default class Intorduction extends Component {
                 value={meeting_with_expert}
                 onChange={handleChange("meeting_with_expert")}
               >
+                <option value="">Choose</option>
                 <option value="appointment">Appointment</option>
                 <option value="more_info">More information</option>
                 <option value="no">No</option>
               </Form.Control>
             </Form.Group>
+            {this.props.meeting_with_expert === "appointment" && (
+              <div className="yes_appointment">
+                <p>
+                  We're looking forward to having an appointment soon. How
+                  should the appointment take place and when is it convenient
+                  for you?
+                </p>
+                <Form.Group>
+                  <Form.Label>
+                    Write a task note (you can find in: Hubspot Task)
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={task_note}
+                    placeholder="Task Note"
+                    onChange={handleChange("task_note")}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>
+                    Write a task note (you can find in: Hubspot Task)
+                  </Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={task_deadline}
+                    placeholder=""
+                    onChange={handleChange("task_deadline")}
+                  />
+                </Form.Group>
+              </div>
+            )}
+            {this.props.meeting_with_expert === "more_info" && (
+              <div className="yes_more_info">
+                <p>
+                  Text depending on previous question: I can send you our online
+                  brochure which contains more information about our products?
+                </p>
+                <Form.Group>
+                  <Form.Label>Could you give me your e-mail please?</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="name@example.com"
+                    value={later_email}
+                    onChange={handleChange("later_email")}
+                  />
+                </Form.Group>
+              </div>
+            )}
+            {this.props.meeting_with_expert === "no" && (
+              <div className="yes_no">
+                <p>
+                  Text depending on previous question: May I send you our online
+                  brochure in case the need arises in the future?
+                </p>
+              </div>
+            )}
           </div>
         )}
-        <div className="later">
-          <p>
-            Text depending on previous question: May I send you our online
-            brochure in case the need arises in the future?
-          </p>
-          <Form.Group>
-            <Form.Label>Could you give me your e-mail please?</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="name@example.com"
-              value={later_email}
-              onChange={handleChange("later_email")}
-            />
-          </Form.Group>
-          <Form.Group></Form.Group>
-        </div>
-        <div className="no">
-          <p>
-            Text depending on previous question: May I send you our online
-            brochure in case the need arises in the future?
-          </p>
-        </div>
-        <div className="appointment">
-          <p>
-            We're looking forward to having an appointment soon. How should the
-            appointment take place and when is it convenient for you?
-          </p>
-          <Form.Group>
-            <Form.Label>
-              Write a task note (you can find in: Hubspot Task)
-            </Form.Label>
-            <Form.Control
-              type="text"
-              value={task_note}
-              placeholder="Task Note"
-              onChange={handleChange("task_note")}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>
-              Write a task note (you can find in: Hubspot Task)
-            </Form.Label>
-            <Form.Control
-              type="date"
-              value={task_deadline}
-              placeholder=""
-              onChange={handleChange("task_deadline")}
-            />
-          </Form.Group>
-        </div>
+        {this.props.introduction === "later" && (
+          <div className="later">
+            <p>
+              Text depending on previous question: May I send you our online
+              brochure in case the need arises in the future?
+            </p>
+            <Form.Group>
+              <Form.Label>Could you give me your e-mail please?</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                value={later_email}
+                onChange={handleChange("later_email")}
+              />
+            </Form.Group>
+          </div>
+        )}
+        {this.props.introduction === "no" && (
+          <div className="no">
+            <p>
+              Text depending on previous question: May I send you our online
+              brochure in case the need arises in the future?
+            </p>
+          </div>
+        )}
+        {this.props.introduction === "appointment" && (
+          <div className="appointment">
+            <p>
+              We're looking forward to having an appointment soon. How should
+              the appointment take place and when is it convenient for you?
+            </p>
+            <Form.Group>
+              <Form.Label>
+                Write a task note (you can find in: Hubspot Task)
+              </Form.Label>
+              <Form.Control
+                type="text"
+                value={task_note}
+                placeholder="Task Note"
+                onChange={handleChange("task_note")}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>
+                Write a task note (you can find in: Hubspot Task)
+              </Form.Label>
+              <Form.Control
+                type="date"
+                value={task_deadline}
+                placeholder=""
+                onChange={handleChange("task_deadline")}
+              />
+            </Form.Group>
+          </div>
+        )}
         <button className="Back" onClick={this.back}>
           « Back
         </button>
