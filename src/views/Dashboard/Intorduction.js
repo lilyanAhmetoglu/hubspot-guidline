@@ -203,10 +203,10 @@ export default class Intorduction extends Component {
             </Form.Group>
           </div>
         )}
-        <button className="Back" onClick={this.back}>
+        <button type="button" className="btn btn-warning"onClick={this.back}>
           « Back
         </button>
-        <button className="Next" onClick={this.continue}>
+        <button type="button" className="btn btn-success" onClick={this.continue}>
           Next »
         </button>
       </Container>

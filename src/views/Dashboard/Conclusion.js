@@ -130,8 +130,11 @@ export default class Conclusion extends Component {
             <hr />
           </div>
         )}
-        <button className="Back" onClick={this.back}>
+        <button type="button" className="btn btn-warning" onClick={this.back}>
           « Back
+        </button>
+        <button type="button" className="btn btn-primary">
+         Submit 
         </button>
       </div>
     );

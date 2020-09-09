@@ -149,7 +149,7 @@ export default class CallCondition extends Component {
             </Form.Group>
           </div>
         )}
-        <button className="Next" onClick={this.continue}>
+        <button type="button" className="btn btn-success" onClick={this.continue}>
           Next »
         </button>
       </Container>
