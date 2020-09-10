@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Server from "../../services/server";
+
 import CallCondition from "./CallCondition";
 import CloseProcess from "./CloseProcess";
 import Intorduction from "./Intorduction";
@@ -124,14 +124,15 @@ export default class Dashboard extends Component {
         />
       );
   };
-  componentDidMount() {
+  /*componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
     const code = query.get("code");
     console.log(code);
     Server.authcode(code).then((res) => {
-      console.log(JSON.stringify(res.data.body));
+      let respoo = JSON.parse(res.data.body) 
+      console.log(respoo.access_token);
     });
-  }
+  }*/
   render() {
     const { step } = this.state;
     return (

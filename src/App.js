@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import AuthenticatedRount from "./services/AuthenticatedRoute";
 import Login from "./views/Pages/Login";
 import Dashboard from "./views/Dashboard";
 import Layout from "./views/hoc/layout";
+import CallBack from "./services/callback";
 import "./App.css";
 
 const loading = () => (
@@ -18,7 +20,13 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route exact path="/login" name="Login Page" component={Login} />
-              <Route exact path="/" name="home" component={Dashboard} />
+              <Route exact path="/" name="home" component={CallBack} />
+              <AuthenticatedRount
+                exact
+                path="/qsales"
+                name="home"
+                render={(props) => <Dashboard {...props} />}
+              />
             </Switch>
           </Layout>
         </React.Suspense>
