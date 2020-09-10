@@ -13,18 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Server from '../../../services/server'
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://www.qimia.io/">
-        Qimia
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+
 function login(){
   Server.authentication();
 }
@@ -74,7 +63,6 @@ export default function Login() {
           >
             Sign In
           </Button>
-          <a>login</a>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
@@ -84,9 +72,7 @@ export default function Login() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
+
     </Container>
   );
 }
