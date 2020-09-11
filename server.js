@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
-var request = require('request');
+var request = require("request");
 const bodyParser = require("body-parser"); //important for requests
 const cookieParser = require("cookie-parser"); // dealing with env parameteres
-var cors = require('cors')
+var cors = require("cors");
 /*********************************** */
 const app = express();
-app.use(cors())
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true })); // using middleware from query string
 app.use(bodyParser.json());
 
@@ -17,6 +17,7 @@ const REDIRECT_URI = "http://localhost:3000/auth-callback";
 const SCOPES = "contacts automation";
 const CLIENT_SECRET = "8dcf41be-c88c-4de6-9ce4-dec4b1b45e7a";
 
+const returnedCompanies = [];
 
 app.get("/hello", (req, res) => {
   res.send("Hello world");
@@ -30,7 +31,7 @@ app.post("/api/hubspot", function (req, res) {
     redirect_uri: REDIRECT_URL,
     code: req.body.code,
   };
-  console.log(req.body.code)
+  //console.log(req.body.code);
   request.post(
     "https://api.hubapi.com/oauth/v1/token",
     { form: formData },
@@ -41,6 +42,25 @@ app.post("/api/hubspot", function (req, res) {
     }
   );
 });
+app.get("/api/contacts", function (req, res) {
+  console.log("server token is" +JSON.parse(JSON.stringify(req.query.token)) );
+  request.get(
+    "https://api.hubapi.com/contacts/v1/lists/all/contacts/all?count=1",
+    {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(JSON.stringify(req.query.token))}`,
+        "Content-Type": "application/json",
+      },
+    },
+    (err, data) => {
+      
+      if (err) return res.status(400).send(err);
+      return res.status(200).send(data);
+    }
+  );
+});
+
+
 
 app.listen(3001, () => {
   console.log("Server is listening on port: 3001");

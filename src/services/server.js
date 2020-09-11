@@ -32,6 +32,12 @@ class Server {
 
     return axios.post(`http://localhost:3001/api/hubspot`,formData);
   }
+  
+  getContacts(){
+    let  token= JSON.parse(sessionStorage.getItem("token"))
+    console.log("axios token is "+ token)
+    return  axios.get(`http://localhost:3001/api/contacts?token=${token}`);
+  }
 }
 
 export default new Server();

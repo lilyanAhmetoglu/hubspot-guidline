@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-
+import Server from "../../services/server"
 import CallCondition from "./CallCondition";
 import CloseProcess from "./CloseProcess";
 import Intorduction from "./Intorduction";
@@ -19,7 +18,7 @@ export default class Dashboard extends Component {
     email: "",
     phone: "",
     company: "",
-    contactperson:"",
+    contactperson: "",
     // step 2
 
     introduction: "",
@@ -124,15 +123,15 @@ export default class Dashboard extends Component {
         />
       );
   };
-  /*componentDidMount() {
-    const query = new URLSearchParams(this.props.location.search);
-    const code = query.get("code");
-    console.log(code);
-    Server.authcode(code).then((res) => {
-      let respoo = JSON.parse(res.data.body) 
-      console.log(respoo.access_token);
+  componentDidMount() {
+    // const query = new URLSearchParams(this.props.location.search);
+    //onst code = query.get("code");
+    //console.log("ee");
+    Server.getContacts().then((res) => {
+      let respoo = JSON.parse(res.data.body);
+      console.log(respoo);
     });
-  }*/
+  }
   render() {
     const { step } = this.state;
     return (

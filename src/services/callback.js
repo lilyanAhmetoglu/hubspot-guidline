@@ -7,13 +7,14 @@ export default class Callback extends Component {
     console.log(code);
     Server.authcode(code).then((res) => {
       let respoo = JSON.parse(res.data.body);
-      console.log(respoo.access_token);
-      if (respoo.access_token) {
+      console.log("respoo" + respoo.access_token);
+      if(respoo.access_token){
         sessionStorage.setItem("token", JSON.stringify(respoo.access_token));
-        window.location.href = "/qsales";
-      } else {
-        window.location.href = "/login";
+        window.location.href="/qsales";
+      }else{
+        window.location.href="/login";
       }
+      
     });
   }
   render() {
