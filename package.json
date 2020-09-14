@@ -11,11 +11,13 @@
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
+    "concurrently": "^5.3.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mdbreact": "^4.27.0",
+    "path": "^0.12.7",
     "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
@@ -26,9 +28,10 @@
     "request": "^2.88.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"node server.js \" \"npm run start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "dev": "concurrently \"node server.js \" \"npm run start\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

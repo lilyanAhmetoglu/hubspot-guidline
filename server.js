@@ -4,12 +4,13 @@ var request = require("request");
 const bodyParser = require("body-parser"); //important for requests
 const cookieParser = require("cookie-parser"); // dealing with env parameteres
 var cors = require("cors");
+const path = require("path");
 /*********************************** */
 const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true })); // using middleware from query string
 app.use(bodyParser.json());
-
+app.use(express.static("/build"));
 const CLIENT_ID = "9ebab9fa-1b06-4191-a849-5f94590debf7";
 const BASE_URL = "https://app.hubspot.com/oauth/authorize";
 const REDIRECT_URL = "http://localhost:3000/";
@@ -136,7 +137,29 @@ app.post("/api/contact", function (req, res) {
   });
 });
 
+//Qimia.io Create mew company with Api key
+app.post("/api/company-qimia", function (req, res) {
+  var options = {
+    method: "POST",
+    url: "https://api.hubapi.com/companies/v2/companies",
+    qs: { hapikey: process.env.API_KEY },
+    headers: {
+      "Content-Type": "application/json",
+     // Authorization: `Bearer ${JSON.parse(JSON.stringify(req.query.token))}`,
+    },
+    body: req.body,
+    json: true,
+  };
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+    return res.status(200).send(response);
+  });
+});
 
+
+app.get("/*", (req, res) => {
+  res.sendfile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 app.listen(3001, () => {
   console.log("Server is listening on port: 3001");
