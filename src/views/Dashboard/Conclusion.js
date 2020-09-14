@@ -9,20 +9,33 @@ export default class Conclusion extends Component {
     event.preventDefault();
     const company = {
       properties: [
-        { name: "name", value: this.props.name },
-        { name: "description", value: this.props.phone },
+        { name: "name", value: this.props.companyName },
+        { name: "description", value: this.props.companyDiscription },
+      ],
+    };
+    const contact = {
+      properties: [
+        { property: "email", value: this.props.email },
+        { property: "firstname", value: this.props.name },
+        { property: "lastname", value: this.props.surname },
+        { property: "phone", value: this.props.phone }
       ],
     };
     Server.createCompany(company).then((res) => {
       console.log("res is" + res);
+      Server.createContact(contact).then((res)=> {
+        console.log("contact res is" + res);
+      })
     });
+  
   };
   render() {
     const {
       name,
       surname,
       contactperson,
-
+      companyName,
+      companyDiscription,
       phone,
       kind,
       email,
@@ -48,6 +61,15 @@ export default class Conclusion extends Component {
             <p>What kind of call will you do?</p>
 
             <b>{kind}</b>
+            
+            <hr />
+            <p>Please enter company name:</p>
+
+            <b>{companyName}</b>
+            <hr />
+            <p>Please enter company discription:</p>
+
+            <b>{companyDiscription}</b>
             <hr />
             <p>Please enter customer name:</p>
 

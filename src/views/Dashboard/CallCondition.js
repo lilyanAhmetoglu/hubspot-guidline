@@ -33,7 +33,9 @@ export default class CallCondition extends Component {
       company,
       contactperson,
       contacts,
-      companies
+      companies,
+      companyName,
+      companyDiscription
     } = this.props;
     console.log(companies);
     return (
@@ -69,12 +71,29 @@ export default class CallCondition extends Component {
               </Form.Control>
             </Form.Group>
             <Form.Group>
+              <Form.Label>Please enter company name:</Form.Label>
+              <Form.Control
+                type="text"
+                value={companyName}
+                placeholder="Company Name"
+                onChange={handleChange("companyName")}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Please enter company discription:</Form.Label>
+              <Form.Control
+                type="text"
+                value={companyDiscription}
+                placeholder="Company Discription"
+                onChange={handleChange("companyDiscription")}
+              />
+            </Form.Group>
+            <Form.Group>
               <Form.Label>Please enter customer name:</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="customer name"
                 value={name}
-                placeholder="First Name"
                 onChange={handleChange("name")}
               />
             </Form.Group>
@@ -84,7 +103,6 @@ export default class CallCondition extends Component {
                 type="text"
                 placeholder="customer family name"
                 value={surname}
-                placeholder="Last Name"
                 onChange={handleChange("surname")}
               />
             </Form.Group>

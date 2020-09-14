@@ -63,6 +63,20 @@ class Server {
       `http://localhost:3001/api/company?token=${token}`,formData
     );
   }
+
+
+  createContact(contact) {
+    let token = JSON.parse(sessionStorage.getItem("token"));
+    var formData = new FormData();
+    formData = contact
+    /*for (var key in company.properties) {
+      formData.append(key, company.properties[key]);
+    }*/
+    console.log("axios token is "+ JSON.stringify(formData))
+    return axios.post(
+      `http://localhost:3001/api/contact?token=${token}`,formData
+    );
+  }
 }
 
 export default new Server();

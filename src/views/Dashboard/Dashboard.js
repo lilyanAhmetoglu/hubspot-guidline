@@ -10,6 +10,8 @@ export default class Dashboard extends Component {
     step: 1,
 
     // step 1
+    companyName:"",
+    companyDiscription:"",
     name: "",
     surname: "",
     email: "",
@@ -60,6 +62,8 @@ export default class Dashboard extends Component {
   showStep = () => {
     const {
       step,
+      companyName,
+      companyDiscription,
       name,
       surname,
       newold,
@@ -92,6 +96,9 @@ export default class Dashboard extends Component {
           contactperson={contactperson}
           contacts={contacts}
           companies={companies}
+          companyName={companyName}
+          companyDiscription={companyDiscription}
+
         />
       );
     if (step === 2)
@@ -124,6 +131,8 @@ export default class Dashboard extends Component {
           surname={surname}
           kind={kind}
           company={company}
+          companyName={companyName}
+          companyDiscription={companyDiscription}
           email={email}
           phone={phone}
           contactperson={contactperson}
@@ -133,6 +142,7 @@ export default class Dashboard extends Component {
           later_email={later_email}
           task_note={task_note}
           task_deadline={task_deadline}
+          
           prevStep={this.prevStep}
         />
       );
