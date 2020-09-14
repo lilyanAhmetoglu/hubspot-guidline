@@ -35,8 +35,18 @@ class Server {
   
   getContacts(){
     let  token= JSON.parse(sessionStorage.getItem("token"))
-    console.log("axios token is "+ token)
+    //console.log("axios token is "+ token)
     return  axios.get(`http://localhost:3001/api/contacts?token=${token}`);
+  }
+  getCompanies(){
+    let  token= JSON.parse(sessionStorage.getItem("token"))
+    //console.log("axios token is "+ token)
+    return  axios.get(`http://localhost:3001/api/companies?token=${token}`);
+  }
+  getCompanyContacts(companyid){
+    let  token= JSON.parse(sessionStorage.getItem("token"))
+    //console.log("axios token is "+ token)
+    return  axios.get(`http://localhost:3001/api/companycontacts?token=${token}&companyid=${companyid}`);
   }
 }
 

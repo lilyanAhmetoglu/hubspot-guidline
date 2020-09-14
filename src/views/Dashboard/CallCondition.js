@@ -14,13 +14,17 @@ export default class CallCondition extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(value)
+    console.log(value);
   };
+  onClickHandler  = event => {
+    const value = event.target.innerHTML;
+    console.log(value)
+  }
+
   render() {
     const {
       name,
       surname,
-      lastName,
       handleChange,
       newold,
       kind,
@@ -28,12 +32,10 @@ export default class CallCondition extends Component {
       phone,
       company,
       contactperson,
-      meeting_with_expert,
-      later_email,
-      task_note,
-      task_deadline,
+      contacts,
+      companies
     } = this.props;
-    
+    console.log(companies);
     return (
       <Container>
         <h4>Call conditions</h4>
@@ -46,7 +48,7 @@ export default class CallCondition extends Component {
             value={newold}
             onChange={handleChange("newold")}
           >
-           <option value="">Choose</option>
+            <option value="">Choose</option>
             <option value="new">New Contact</option>
             <option value="old">Existing Contact</option>
           </Form.Control>
@@ -116,9 +118,9 @@ export default class CallCondition extends Component {
                 onChange={handleChange("company")}
               >
                 <option value="">Choose</option>
-                <option>company1</option>
-                <option>company2</option>
-                <option>company3</option>
+                {companies.map((company, index) => (
+                <option key={index} value={company.companyId} onClick={this.onClickHandler}>{Object.values(company.properties)[1].value}/ {Object.values(company.properties)[0].value}</option>
+                ))}
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect1">
@@ -129,27 +131,36 @@ export default class CallCondition extends Component {
                 onChange={handleChange("kind")}
               >
                 <option value="">Choose</option>
+
                 <option>Initial Call</option>
+
                 <option>Follow up call</option>
                 <option>Customer call</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>If you already know who you will call, please chose your contact person (if you don't have a specific contact person go next):</Form.Label>
+              <Form.Label>
+                If you already know who you will call, please chose your contact
+                person (if you don't have a specific contact person go next):
+              </Form.Label>
               <Form.Control
                 as="select"
                 value={contactperson}
                 onChange={handleChange("contactperson")}
               >
                 <option value="">Choose</option>
-                <option>laura</option>
-                <option>Miray</option>
-                <option>melek</option>
+                {contacts.map((contact, index) => (
+                  <option key={index} value={contact.vid}>{Object.values(contact.properties)[0].value} {Object.values(contact.properties)[2].value}</option>
+                ))}
               </Form.Control>
             </Form.Group>
           </div>
         )}
-        <button type="button" className="btn btn-success" onClick={this.continue}>
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={this.continue}
+        >
           Next »
         </button>
       </Container>

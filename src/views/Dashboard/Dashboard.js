@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Server from "../../services/server"
+import Server from "../../services/server";
 import CallCondition from "./CallCondition";
 import CloseProcess from "./CloseProcess";
 import Intorduction from "./Intorduction";
@@ -19,6 +19,8 @@ export default class Dashboard extends Component {
     phone: "",
     company: "",
     contactperson: "",
+    contacts: [],
+    companies: [],
     // step 2
 
     introduction: "",
@@ -45,6 +47,14 @@ export default class Dashboard extends Component {
 
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
+    if(input==="company"){
+      console.log("this is company")
+      Server.getCompanyContacts( e.target.value).then((res) => {
+        let respoo = JSON.parse(res.data.body);
+        const contacts = respoo.contacts;
+        this.setState({ contacts });
+      });
+    }
   };
 
   showStep = () => {
@@ -63,6 +73,8 @@ export default class Dashboard extends Component {
       later_email,
       task_note,
       task_deadline,
+      contacts,
+      companies,
     } = this.state;
 
     if (step === 1)
@@ -78,6 +90,8 @@ export default class Dashboard extends Component {
           email={email}
           phone={phone}
           contactperson={contactperson}
+          contacts={contacts}
+          companies={companies}
         />
       );
     if (step === 2)
@@ -127,13 +141,21 @@ export default class Dashboard extends Component {
     // const query = new URLSearchParams(this.props.location.search);
     //onst code = query.get("code");
     //console.log("ee");
-    Server.getContacts().then((res) => {
+    Server.getCompanies().then((res) => {
       let respoo = JSON.parse(res.data.body);
       console.log(respoo);
+      const companies = respoo.companies;
+      this.setState({ companies });
+    });
+    Server.getContacts().then((res) => {
+      let respoo = JSON.parse(res.data.body);
+      const contacts = respoo.contacts;
+      this.setState({ contacts });
     });
   }
   render() {
     const { step } = this.state;
+
     return (
       <div className="container">
         <div className="row ">

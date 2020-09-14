@@ -43,9 +43,9 @@ app.post("/api/hubspot", function (req, res) {
   );
 });
 app.get("/api/contacts", function (req, res) {
-  console.log("server token is" +JSON.parse(JSON.stringify(req.query.token)) );
+ // console.log("server token is" +JSON.parse(JSON.stringify(req.query.token)) );
   request.get(
-    "https://api.hubapi.com/contacts/v1/lists/all/contacts/all?count=1",
+    "https://api.hubapi.com/contacts/v1/lists/all/contacts/all?",
     {
       headers: {
         Authorization: `Bearer ${JSON.parse(JSON.stringify(req.query.token))}`,
@@ -60,7 +60,41 @@ app.get("/api/contacts", function (req, res) {
   );
 });
 
+app.get("/api/companies", function (req, res) {
+  //console.log("server token is" +JSON.parse(JSON.stringify(req.query.token)) );
+  request.get(
+    "https://api.hubapi.com/companies/v2/companies/paged?properties=name&properties=website",
+    {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(JSON.stringify(req.query.token))}`,
+        "Content-Type": "application/json",
+      },
+    },
+    (err, data) => {
+      
+      if (err) return res.status(400).send(err);
+      return res.status(200).send(data);
+    }
+  );
+});
 
+app.get("/api/companycontacts", function (req, res) {
+   console.log("server token is" +JSON.parse(JSON.stringify(req.query.companyid)) );
+   request.get(
+     `https://api.hubapi.com/companies/v2/companies/${JSON.parse(JSON.stringify(req.query.companyid))}/contacts?`,
+     {
+       headers: {
+         Authorization: `Bearer ${JSON.parse(JSON.stringify(req.query.token))}`,
+         "Content-Type": "application/json",
+       },
+     },
+     (err, data) => {
+       
+       if (err) return res.status(400).send(err);
+       return res.status(200).send(data);
+     }
+   );
+ });
 
 app.listen(3001, () => {
   console.log("Server is listening on port: 3001");
