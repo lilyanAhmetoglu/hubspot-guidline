@@ -13,10 +13,6 @@ export default class Intorduction extends Component {
 
   render() {
     const {
-      jobTitle,
-
-      jobCompany,
-      jobLocation,
       introduction,
       handleChange,
       firstName,

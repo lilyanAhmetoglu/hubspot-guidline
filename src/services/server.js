@@ -20,33 +20,48 @@ class Server {
 
   authcode(authcode) {
     let formData = {
-      code:authcode
-    }
+      code: authcode,
+    };
 
     const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin':'http://localhost:3000',
-      'Access-Control-Allow-Headers':'Origin, Content-Type, X-Auth-Token',
-      'Access-Control-Allow-Methods':'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-    }
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+      "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+    };
 
-    return axios.post(`http://localhost:3001/api/hubspot`,formData);
+    return axios.post(`http://localhost:3001/api/hubspot`, formData);
   }
-  
-  getContacts(){
-    let  token= JSON.parse(sessionStorage.getItem("token"))
+
+  getContacts() {
+    let token = JSON.parse(sessionStorage.getItem("token"));
     //console.log("axios token is "+ token)
-    return  axios.get(`http://localhost:3001/api/contacts?token=${token}`);
+    return axios.get(`http://localhost:3001/api/contacts?token=${token}`);
   }
-  getCompanies(){
-    let  token= JSON.parse(sessionStorage.getItem("token"))
+  getCompanies() {
+    let token = JSON.parse(sessionStorage.getItem("token"));
     //console.log("axios token is "+ token)
-    return  axios.get(`http://localhost:3001/api/companies?token=${token}`);
+    return axios.get(`http://localhost:3001/api/companies?token=${token}`);
   }
-  getCompanyContacts(companyid){
-    let  token= JSON.parse(sessionStorage.getItem("token"))
+  getCompanyContacts(companyid) {
+    let token = JSON.parse(sessionStorage.getItem("token"));
     //console.log("axios token is "+ token)
-    return  axios.get(`http://localhost:3001/api/companycontacts?token=${token}&companyid=${companyid}`);
+    return axios.get(
+      `http://localhost:3001/api/companycontacts?token=${token}&companyid=${companyid}`
+    );
+  }
+
+  createCompany(company) {
+    let token = JSON.parse(sessionStorage.getItem("token"));
+    var formData = new FormData();
+    formData = company
+    /*for (var key in company.properties) {
+      formData.append(key, company.properties[key]);
+    }*/
+    console.log("axios token is "+ JSON.stringify(formData))
+    return axios.post(
+      `http://localhost:3001/api/company?token=${token}`,formData
+    );
   }
 }
 

@@ -1,9 +1,21 @@
 import React, { Component } from "react";
-
+import Server from "../../services/server";
 export default class Conclusion extends Component {
   back = (e) => {
     e.preventDefault();
     this.props.prevStep();
+  };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const company = {
+      properties: [
+        { name: "name", value: this.props.name },
+        { name: "description", value: this.props.phone },
+      ],
+    };
+    Server.createCompany(company).then((res) => {
+      console.log("res is" + res);
+    });
   };
   render() {
     const {
@@ -22,6 +34,7 @@ export default class Conclusion extends Component {
       task_note,
       task_deadline,
     } = this.props;
+    
     return (
       <div>
         <h4>Here is the information you entered:</h4>
@@ -133,8 +146,8 @@ export default class Conclusion extends Component {
         <button type="button" className="btn btn-warning" onClick={this.back}>
           « Back
         </button>
-        <button type="button" className="btn btn-primary">
-         Submit 
+        <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>
+          Submit
         </button>
       </div>
     );

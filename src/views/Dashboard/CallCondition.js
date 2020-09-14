@@ -119,7 +119,7 @@ export default class CallCondition extends Component {
               >
                 <option value="">Choose</option>
                 {companies.map((company, index) => (
-                <option key={index} value={company.companyId} onClick={this.onClickHandler}>{Object.values(company.properties)[1].value}/ {Object.values(company.properties)[0].value}</option>
+                <option key={index} value={company.companyId} onClick={this.onClickHandler}> {Object.values(company.properties)[0].value}</option>
                 ))}
               </Form.Control>
             </Form.Group>
