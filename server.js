@@ -17,7 +17,7 @@ const REDIRECT_URL = "http://localhost:3000/";
 const REDIRECT_URI = "http://localhost:3000/auth-callback";
 const SCOPES = "contacts automation";
 const CLIENT_SECRET = "8dcf41be-c88c-4de6-9ce4-dec4b1b45e7a";
-
+const API_KEY="5ec222f8-1992-4df1-8d13-0b5cbe6c2b1a";
 const returnedCompanies = [];
 
 app.get("/hello", (req, res) => {
@@ -142,7 +142,7 @@ app.post("/api/company-qimia", function (req, res) {
   var options = {
     method: "POST",
     url: "https://api.hubapi.com/companies/v2/companies",
-    qs: { hapikey: process.env.API_KEY },
+    qs: { hapikey: API_KEY },
     headers: {
       "Content-Type": "application/json",
      // Authorization: `Bearer ${JSON.parse(JSON.stringify(req.query.token))}`,
