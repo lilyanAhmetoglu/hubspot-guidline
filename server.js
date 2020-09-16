@@ -155,12 +155,14 @@ app.post("/api/company-qimia", function (req, res) {
     return res.status(200).send(response);
   });
 });
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-
-app.get("/*", (req, res) => {
+/*app.get("/*", (req, res) => {
   res.sendfile(path.join(__dirname, "..", "public", "index.html"));
 });
-
-app.listen(3001, () => {
-  console.log("Server is listening on port: 3001");
+*/
+app.listen(3000, () => {
+  console.log("Server is listening on port: 3000");
 });
