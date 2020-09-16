@@ -163,6 +163,6 @@ app.get('/', (req, res) => {
   res.sendfile(path.join(__dirname, "..", "public", "index.html"));
 });
 */
-app.listen(3000, () => {
-  console.log("Server is listening on port: 3000");
+app.listen(8080, () => {
+  console.log("Server is listening on port: 8080");
 });
