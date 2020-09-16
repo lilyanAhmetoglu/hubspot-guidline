@@ -28,7 +28,7 @@
     "request": "^2.88.2"
   },
   "scripts": {
-    "start": "concurrently \"node server.js \" \"npm run start\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "dev": "concurrently \"node server.js \" \"npm run start\"",

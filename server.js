@@ -139,6 +139,12 @@ app.post("/api/contact", function (req, res) {
 
 //Qimia.io Create mew company with Api key
 app.post("/api/company-qimia", function (req, res) {
+  const company = {
+    properties: [
+      { name: "name", value: req.query.name},
+      { name: "description", value: req.query.name },
+    ],
+  };
   var options = {
     method: "POST",
     url: "https://api.hubapi.com/companies/v2/companies",
@@ -147,7 +153,7 @@ app.post("/api/company-qimia", function (req, res) {
       "Content-Type": "application/json",
      // Authorization: `Bearer ${JSON.parse(JSON.stringify(req.query.token))}`,
     },
-    body: req.body,
+    body: company,
     json: true,
   };
   request(options, function (error, response, body) {
@@ -155,14 +161,11 @@ app.post("/api/company-qimia", function (req, res) {
     return res.status(200).send(response);
   });
 });
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
-/*app.get("/*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendfile(path.join(__dirname, "..", "public", "index.html"));
 });
-*/
-app.listen(8080, () => {
-  console.log("Server is listening on port: 8080");
+
+app.listen(3001, () => {
+  console.log("Server is listening on port: 3001");
 });
