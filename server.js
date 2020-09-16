@@ -163,7 +163,6 @@ app.get('/', (req, res) => {
   res.sendfile(path.join(__dirname, "..", "public", "index.html"));
 });
 */
-const hostname = 'http://ec2-34-239-139-19.compute-1.amazonaws.com:3000/';
-app.listen(3000, hostname,() => {
+app.listen(3000, () => {
   console.log("Server is listening on port: 3000");
 });
