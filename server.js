@@ -162,10 +162,10 @@ app.post("/api/company-qimia", function (req, res) {
   });
 });
 
-app.get("/*", (req, res) => {
+/*app.get("/*", (req, res) => {
   res.sendfile(path.join(__dirname, "..", "public", "index.html"));
-});
+});*/
 
-app.listen(3001, () => {
-  console.log("Server is listening on port: 3001");
+app.listen(8080, () => {
+  console.log("Server is listening on port: 8080");
 });
